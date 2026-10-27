@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="google" content="notranslate">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#050605">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>WARD B CCTV</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 세로로 들고 있으면 본 화면을 가린다. -->
+  <div class="portrait-lock" role="status">
+    <p>ROTATE TABLET</p>
+    <p class="portrait-ko">태블릿을 가로로 돌려 주세요</p>
+  </div>
+
+  <!-- 첫 터치로 재생 권한과 전체화면을 연다. -->
+  <div id="gate" class="gate">
+    <div class="gate-crt" aria-hidden="true"></div>
+    <div class="gate-panel">
+      <p class="gate-kicker">WARD B SECURITY</p>
+      <button type="button" id="gate-btn" class="gate-btn">
+        TAP TO ACCESS<br>CCTV SYSTEM
+      </button>
+    </div>
+  </div>
+
+  <div id="admin" class="admin" role="dialog" aria-modal="true" aria-labelledby="admin-title" hidden>
+    <div class="admin-card">
+      <p id="admin-title" class="admin-title">ADMIN</p>
+      <p class="admin-kicker">PRELOAD</p>
+      <div id="admin-preload" class="admin-preload"></div>
+      <button type="button" id="admin-sound">SOUND: OFF</button>
+      <button type="button" id="admin-reset">RESET CAM 01</button>
+      <button type="button" id="admin-full">FULLSCREEN</button>
+      <button type="button" id="admin-replay">RESTART VIDEO</button>
+      <button type="button" id="admin-close">CLOSE</button>
+    </div>
+  </div>
+
+  <div class="shell" id="shell">
+    <header class="topbar">
+      <span>WARD B</span>
+      <span>SECURITY OFFICE</span>
+    </header>
+
+    <section class="stage" aria-label="CCTV monitor">
+      <div class="screen">
+        <div class="feeds" id="feeds"></div>
+        <div class="shade" aria-hidden="true"></div>
+        <!-- 스캔라인, 비네팅, 약한 노이즈. 영상 내용보다 세지 않게. -->
+        <div class="grain" aria-hidden="true"></div>
+        <div class="crt" aria-hidden="true"></div>
+        <div id="offline" class="offline" hidden>
+          <p id="offline-title" class="offline-title"></p>
+          <p id="offline-meta" class="offline-meta"></p>
+        </div>
+        <div class="static" id="static" aria-hidden="true">
+          <span id="static-text" class="static-text"></span>
+        </div>
+      </div>
+
+      <div class="osd">
+        <div class="osd-left">
+          <div id="osd-id" class="osd-id">CAM 01</div>
+          <div id="osd-name" class="osd-name">WARD B - CORRIDOR A</div>
+        </div>
+        <div class="osd-right">
+          <div id="osd-rec" class="osd-rec">REC <i class="dot" aria-hidden="true"></i></div>
+          <div id="osd-date" class="osd-date"></div>
+          <div id="osd-time" class="osd-time"></div>
+        </div>
+      </div>
+
+      <!-- 칸 순서는 script.js의 cameras 배열 순서와 같다. -->
+      <div class="map" id="floor-map" aria-label="Ward map">
+        <div class="map-title">WARD MAP</div>
+        <div class="map-grid" id="map-grid"></div>
+      </div>
+
+      <p id="status" class="status"></p>
+    </section>
+
+    <nav class="dock" id="dock" aria-label="Cameras"></nav>
+
+    <!-- 오른쪽 아래 테두리를 빠르게 다섯 번 누르면 관리자 패널이 열린다. -->
+    <div class="chin">
+      <span class="chin-mark">MONITOR 04</span>
+      <div id="admin-hotspot" class="admin-hotspot" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
